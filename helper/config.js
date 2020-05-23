@@ -6,7 +6,7 @@ const host = {
 const desiredCaps = {
     platformName: "Android",
     deviceName: "Android Emulator",
-    app: "/Users/nadia/workspace/appium_node_sample/app/app-debug.apk",
+    app: "/path to/appium_node/app/app-debug.apk",
     browserName: '',
     noReset: false
     };
