@@ -1,0 +1,27 @@
+{
+  "name": "appium_node",
+  "version": "1.0.0",
+  "description": "Practice appium project with node js.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "wd": "^1.5.0",
+    "assert": "latest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NadiaLin/appium_node.git"
+  },
+  "keywords": [
+    "appium",
+    "nodejs"
+  ],
+  "author": "Nadia Lin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NadiaLin/appium_node/issues"
+  },
+  "homepage": "https://github.com/NadiaLin/appium_node#readme"
+}
