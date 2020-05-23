@@ -2,13 +2,16 @@
   "name": "appium_node",
   "version": "1.0.0",
   "description": "Practice appium project with node js.",
-  "main": "index.js",
+  "main": "sample.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node sample.js"
   },
   "dependencies": {
-    "wd": "^1.5.0",
-    "assert": "latest"
+    "assert": "^2.0.0",
+    "wd": "^1.12.1"
+  },
+  "exports": {
+    "./helper": "./helper/config"
   },
   "repository": {
     "type": "git",

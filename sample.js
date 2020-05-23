@@ -3,21 +3,13 @@
 var wd = require("wd");
 const assert = require("assert");
 
-var host = {
-    host: '127.0.0.1',
-    port: 4723
-    };
-
-var desiredCaps = {
-    platformName: "Android",
-    deviceName: "Android Emulator",
-    app: "/Users/nadia/workspace/appium_node_sample/app/app-debug.apk",
-    browserName: '',
-    noReset: false
-    };
+var config = require("./helper/config.js");
+    host = config.host
+    desiredCaps = config.desiredCaps;
     
 async function testAddPlant() {  
     let driver = await wd.promiseChainRemote(host);
+
     await driver.init(desiredCaps);
     await driver.setImplicitWaitTimeout(10000);
     
@@ -34,7 +26,7 @@ async function testAddPlant() {
     let addedPlant = await driver.element('id', 'snackbar_text');
     let addText = await  addedPlant.text();
 
-    // assert.equal(addText, "Added plant to garden");
+    assert.equal(addText, "Added plant to garden");
 }
 
 testAddPlant()
