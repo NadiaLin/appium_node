@@ -10,3 +10,6 @@
 
 3. run the test
 > npm run test
+
+### Reference
+Android app is from android studio sample app
