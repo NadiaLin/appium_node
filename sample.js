@@ -4,28 +4,42 @@ var wd = require("wd");
 const assert = require("assert");
 
 var config = require("./helper/config.js");
-    host = config.host
-    desiredCaps = config.desiredCaps;
+    let host = config.host
+    let desiredCaps = config.desiredCaps;
     
-async function testAddPlant() {  
-    let driver = await wd.promiseChainRemote(host);
+async function testAddPlant() {      
+    let driver = await setupDriver(host, desiredCaps);
 
+    await addPlantWhenListEmpty(driver);
+    await addPlantAtIndex(0, driver);
+    await checkPlantAdded(driver);
+}
+
+async function setupDriver(host, desiredCaps) {
+    var driver = await wd.promiseChainRemote(host);
     await driver.init(desiredCaps);
-    await driver.setImplicitWaitTimeout(10000);
-    
-    let addPlantBtn = await driver.element('id', "add_plant");
-    await addPlantBtn.click();
+    await driver.setImplicitWaitTimeout(50000);
 
+    return driver;
+}
+
+async function addPlantWhenListEmpty(driver) {
+    let addPlantBtn = await driver.element('id', 'add_plant');
+    await addPlantBtn.click();
+}
+
+async function addPlantAtIndex(index, driver) {
     var plantElements = await driver.elements('id', 'plant_item_title');
-    let appleElement = await plantElements[0]
-    await appleElement.click();
+    let plant = await plantElements[index];
+    await plant.click();
 
     let addBtn = await driver.element('id', 'fab');
     await addBtn.click();
+}
 
+async function checkPlantAdded(driver) {
     let addedPlant = await driver.element('id', 'snackbar_text');
-    let addText = await  addedPlant.text();
-
+    let addText = await addedPlant.text();
     assert.equal(addText, "Added plant to garden");
 }
 
